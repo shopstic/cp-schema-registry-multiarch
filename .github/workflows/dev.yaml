@@ -6,13 +6,14 @@ defaults:
   run:
     shell: bash
 
+env:
+   IMAGE_REPOSITORY: public.ecr.aws/shopstic
+   IMAGE_NAME: cp-schema-registry
+
 jobs:
   build:
     name: Build image
     runs-on: [self-hosted, nix]
-    env:
-      IMAGE_REPOSITORY: public.ecr.aws/shopstic
-      IMAGE_NAME: cp-schema-registry
     strategy:
       matrix:
         arch: [x86_64, aarch64]
@@ -49,8 +50,6 @@ jobs:
     name: Push multi-arch image manifest
     runs-on: [self-hosted, nix]
     needs: [build]
-    env:
-      IMAGE_REPOSITORY: public.ecr.aws/shopstic
     steps:
       - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
 
