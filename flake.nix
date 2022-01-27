@@ -44,6 +44,7 @@
                 ;
               inherit (pkgs)
                 skopeo
+                awscli2
                 ;
             };
           };
