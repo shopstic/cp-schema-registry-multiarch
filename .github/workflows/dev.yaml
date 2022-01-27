@@ -10,7 +10,6 @@ jobs:
   build:
     name: Build image
     runs-on: [self-hosted, nix]
-    needs: [test]
     env:
       IMAGE_REPOSITORY: public.ecr.aws/shopstic
       IMAGE_NAME: cp-schema-registry
